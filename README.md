@@ -1,8 +1,8 @@
 # mysite
 This is a version of the offical Django tutorial application configured for deployment into a production environment on Heroku.
 
-Done with part 4 of the official Django tutorial up to the section titled 
-"Use generic views: Less code is better" at https://docs.djangoproject.com/en/1.7/intro/tutorial04/#use-generic-views-less-code-is-better
+Done with part 4 of the official Django tutorial.
+ https://docs.djangoproject.com/en/1.7/intro/tutorial04
 
 # Getting started
 Start your DAD virtual environment.
@@ -27,12 +27,18 @@ Install the packages from requirements.txt (you probably already have these inst
 pip install -r requirements.txt
 ```
 
-Then set the DATABASE_URL environment variable. Finally, create the initial database structure with:
+Then set the DATABASE_URL environment variable. Finally, create the initial database structure and interactively create the initial security principal with:
 ```
 python manage.py syncdb
 ```
 
+You can view the polls app running locally by starting the project with
+```
+python manage.py runserver
+```
+# Deployment
+The in-class exercise from lesson 04 covers steps how to deploy into the production environment on Heroku.
+
 # Misc
-The generic views are included in a separate branch named generic_views.
 
 You can see the deployed version at http://usma-it394-polls.herokuapp.com/polls/
