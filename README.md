@@ -1,8 +1,8 @@
 # mysite
-This is a version of the offical Django tutorial application configured for deployment into a production environment on Heroku.
+This is a version of the official Django tutorial application configured for deployment into a production environment on Heroku.
 
-Done with part 4 of the official Django tutorial.
- https://docs.djangoproject.com/en/1.7/intro/tutorial04
+Done with part 5 of the official Django tutorial.
+ https://docs.djangoproject.com/en/1.7/intro/tutorial05
 
 # Getting started
 Start your DAD virtual environment.
