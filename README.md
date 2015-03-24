@@ -75,17 +75,19 @@ heroku run:detached python manage.py migrate
 ```
 
 The firewall configuration also complicates the creation of the applications initial security principal (the "superuser"). Check the file named create_admin.sh.  It provides a method to create the superuser on heroku.
-
 ```
 heroku run:detached bash ./create_admin.sh admin admin@example.com password
+'''
+
 # Misc
 
 You can see the deployed version at http://usma-it394-polls.herokuapp.com/polls/
 
-## Reuse a Heroku Instance
+## Reuse a Heroku Application Instance
 Instead of creating a new Heroku application with "heroku create", You can associate a new clone of a project with an existing Heroku application instance.  I could clone this repository then associate it with the heroku application "immense-scrubland-9864" (previosly made with "heroku create" on another computer) with the following command:
 ```
 heroku git:remote –a immense-scrubland-9864
 ```
+
 ## Procfile
 Heroku uses the commands in the Procfile to run your application.  See https://devcenter.heroku.com/articles/procfile for additional information.
