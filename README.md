@@ -77,7 +77,7 @@ heroku run:detached python manage.py migrate
 The firewall configuration also complicates the creation of the applications initial security principal (the "superuser"). Check the file named create_admin.sh.  It provides a method to create the superuser on heroku.
 ```
 heroku run:detached bash ./create_admin.sh admin admin@example.com password
-'''
+```
 
 # Misc
 
