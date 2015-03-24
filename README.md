@@ -60,6 +60,7 @@ You can observe the status of the application on heroku with
 ```
 heroku logs
 heroku ps
+```
 
 ## Remote data management commands
 We are separated from Heroku by a firewall that blocks interactive access to Heroku one-off dynos (See: https://devcenter.heroku.com/articles/one-off-dynos).  Because of this you'll need to interact with Heroku using the run:detached option.
