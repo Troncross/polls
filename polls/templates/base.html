@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}USMA IT394 Polls App{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+</head>
+
+<body>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+	<div id="sidebar">
+        {% block sidebar %}
+        <ul>
+			<h2>Menu</h2>
+            <li><a href="/polls/">Polls</a></li>
+            <li><a href="https://github.com/usma-it394/usma-it394-polls/" target="_blank">GitHub</a></li>			
+        </ul>
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,8 +1,10 @@
-{% load staticfiles %}
+{% extends "base.html" %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+{% block title %}{{ question.question_text }}{% endblock %}
 
-<h1>{{ question.question_text }}</h1>
+{% block content %}
+
+<h2>{{ question.question_text }}</h2>
 
 <ul>
 {% for choice in question.choice_set.all %}
@@ -12,3 +14,5 @@
 
 <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
 <a href="{% url 'polls:index'%}">View Polls?</a>
+
+{% endblock %}
