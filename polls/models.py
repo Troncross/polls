@@ -3,6 +3,11 @@ import datetime
 from django.db import models
 from django.utils import timezone
 
+# You can find an example class diagram for the Model at
+# http://yuml.me/edit/53759046
+# You'll notice that the Model class provided by Django is 
+# elided (it doesn't have the attributes or methods listed.
+
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
