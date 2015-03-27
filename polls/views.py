@@ -6,6 +6,10 @@ from django.utils import timezone
 
 from polls.models import Choice, Question
 
+# You can find an example class diagram for the View (M-T-V pattern) at
+# http://yuml.me/edit/c1965e70
+# You'll notice that the View classes provided by Django are
+# elided (they do not have the attributes or methods listed).
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
@@ -16,7 +20,7 @@ class IndexView(generic.ListView):
         Return the last five published questions (not including those set to be
         published in the future).
         """
-        return Question.objects.filter(        pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):
