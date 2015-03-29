@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href={% static 'polls/images/favicon.ico' %}>
+    <link rel="icon" href="{% static 'polls/images/favicon.ico' %}">
 
     <title>{% block title %}USMA IT394 Polls App{% endblock %}</title>
 
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    <link href="{% static 'bootstrap-3.3.4-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap-3.3.4-dist/examples/dashboard/dashboard.css' %}" rel="stylesheet">
 	<link href="{% static 'polls/style.css' %}" rel="stylesheet" type="text/css"  />
 	
     <!--[if lt IE 9]>
@@ -70,7 +70,7 @@
 	<script>
 	    $.backstretch("{% static 'polls/images/background.jpg' %}");
 	</script>
-    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <script src="{% static 'bootstrap-3.3.4-dist/js/bootstrap.min.js' %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
