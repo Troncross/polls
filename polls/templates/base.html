@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="http://www.westpoint.edu/Style%20Library/WestPoint/Images/favicon.ico">
+    <link rel="icon" href={% static 'polls/images/favicon.ico' %}>
 
     <title>{% block title %}USMA IT394 Polls App{% endblock %}</title>
 
@@ -65,6 +65,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<!-- backstretch - http://srobbin.com/jquery-plugins/backstretch/ -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 	<script>
 	    $.backstretch("{% static 'polls/images/background.jpg' %}");
