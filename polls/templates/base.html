@@ -36,10 +36,10 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-						Hello {{ user.username }}
+						<li>Hello {{ user.username }}</li>
                         <li><a href="{% url 'admin:index' %}" target="_blank">Admin</a></li>
                     {% else %}
-						Hello world
+						<li>Hello world</li>
                     {% endif %}
                         <li><a href="http://github.com" target="_blank">GitHub</a></li>
               </ul>
