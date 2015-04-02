@@ -1,8 +1,6 @@
 # usma-it394-polls
 This is a version of the official Django tutorial application configured for deployment into a production environment on Heroku.
 
-Done with part 6 of the official Django tutorial.
- https://docs.djangoproject.com/en/1.7/intro/tutorial06
 
 # Getting started
 Start your DAD virtual environment.
@@ -78,6 +76,15 @@ The firewall configuration also complicates the creation of the applications ini
 ```
 heroku run:detached bash ./create_admin.sh admin admin@example.com password
 ```
+# User Authentication with django.contrib.auth
+The official Django documentation on the auth packacage is available at https://docs.djangoproject.com/en/1.7/topics/auth/.  A usefule wal
+
+The django.contrib.auth package:
+URLs - https://github.com/django/django/blob/master/django/contrib/auth/urls.py
+
+Views - https://github.com/django/django/blob/master/django/contrib/auth/views.py
+
+http://techbus.safaribooksonline.com/book/web-development/9781784398194/rewriting-our-application-using-django-1dot7/ch07lvl2sec40_html
 
 # Misc
 
