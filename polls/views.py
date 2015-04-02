@@ -6,6 +6,14 @@ from django.utils import timezone
 
 from polls.models import Choice, Question
 
+from django.contrib.auth.decorators import login_required
+
+class LoginRequiredMixin(object):
+    @classmethod
+    def as_view(cls, **initkwargs):
+        view = super(LoginRequiredMixin, cls).as_view(**initkwargs)
+        return login_required(view)
+
 # You can find an example class diagram for the View (M-T-V pattern) at
 # http://yuml.me/edit/c1965e70
 # You'll notice that the View classes provided by Django are
@@ -33,7 +41,7 @@ class DetailView(generic.DetailView):
         return Question.objects.filter(pub_date__lte=timezone.now())
 
 
-class ResultsView(generic.DetailView):
+class ResultsView(LoginRequiredMixin, generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 	
