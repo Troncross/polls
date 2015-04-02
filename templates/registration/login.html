@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+  <div class="hero-unit">
+	<div class="container">
+    <form action="{% url 'django.contrib.auth.views.login' %}" method="post">
+      {% csrf_token %}
+      <legend>You must login to view poll results.</legend>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"/>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"/>
+      </div>
+      <div class="form-group">
+        <button type="submit">Login</button>
+      </div>
+      <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+	</div>
+  </div>
+{% endblock %}
