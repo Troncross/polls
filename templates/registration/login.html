@@ -5,6 +5,11 @@
 {% block content %}
   <div class="hero-unit">
 	<div class="container">
+	
+	{% if form.errors %}
+	<div class="alert alert-danger">Your username and password didn't match. Please try again.</div>
+	{% endif %}
+	
     <form action="{% url 'django.contrib.auth.views.login' %}" method="post">
       {% csrf_token %}
       <legend>You must login to view poll results.</legend>
