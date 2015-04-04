@@ -31,13 +31,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{% url 'polls:index' %}">Polls</a>
+          <a class="navbar-brand" href="{% url 'polls:index' %}">USMA IT394 Polls</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
 						<li><a href="{% url 'django.contrib.auth.views.logout' %}">Logout {{ user.username }}</a></li>
                         <li><a href="{% url 'admin:index' %}" target="_blank">Admin</a></li>
+						<li><a href="https://codeship.com/projects/72411" target="_blank">CodeShip</a></li>
                     {% else %}
 						<li>Hello world</li>
                     {% endif %}
