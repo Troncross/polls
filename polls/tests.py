@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.test import TestCase
 from polls.models import Question
 from django.core.urlresolvers import reverse
-
+from django.contrib.auth.models import User
 
 class QuestionMethodTests(TestCase):
 
@@ -115,3 +115,24 @@ class QuestionIndexDetailTests(TestCase):
         past_question = create_question(question_text='Past Question.', days=-5)
         response = self.client.get(reverse('polls:detail', args=(past_question.id,)))
         self.assertContains(response, past_question.question_text, status_code=200)
+		
+class QuestionResultsTests(TestCase):
+    def test_results_view_without_login(self):
+        """
+        The results view of a question should redirect (302) to the login page if the user is not
+		logged in.
+        """
+        question = create_question(question_text='Not logged in', days=-1)
+        response = self.client.get(reverse('polls:results',args=(question.id,)))
+        self.assertEqual(response.status_code, 302)
+
+    def test_detail_view_with_login(self):
+        """
+        The results view of a question should return the results if the user is
+		logged in.
+        """
+        User.objects.create_superuser('fred', 'fred@fred.fred', 'secret')
+        self.client.login(username='fred',password='secret')
+        question = create_question(question_text='Loged in', days=-1)
+        response = self.client.get(reverse('polls:results',args=(question.id,)))
+        self.assertContains(response, 'Loged in',status_code=200)	
