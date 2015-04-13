@@ -184,7 +184,7 @@ class ValidatorTests(TestCase):
             validators.not_future(value)
         
     def not_unauthorized_word(self):
-        """Raise a ValidationError if the value is in the future.
+        """Raise a ValidationError if the value is in the unauthorized word list.
         """
         value = 'chipmunk'
         with self.assertRaises(ValidationError):
