@@ -6,6 +6,9 @@ from polls.models import Question
 from django.core.urlresolvers import reverse, resolve
 from django.contrib.auth.models import User
 
+from django.core.exceptions import ValidationError
+import validators
+
 class QuestionMethodTests(TestCase):
 
     def test_was_published_recently_with_future_question(self):
@@ -170,4 +173,19 @@ class QuestionResultsTests(TestCase):
         self.client.login(username='fred',password='secret')
         question = create_question(question_text='Loged in', days=-1)
         response = self.client.get(reverse('polls:results',args=(question.id,)))
-        self.assertContains(response, 'Loged in',status_code=200)	
+        self.assertContains(response, 'Loged in',status_code=200)
+        
+class ValidatorTests(TestCase):
+    def test_not_future_fails(self):
+        """Raise a ValidationError if the value is in the future.
+        """
+        value = timezone.now() + datetime.timedelta(days=30)
+        with self.assertRaises(ValidationError):
+            validators.not_future(value)
+        
+    def not_unauthorized_word(self):
+        """Raise a ValidationError if the value is in the future.
+        """
+        value = 'chipmunk'
+        with self.assertRaises(ValidationError):
+            validators.not_unauthorized_word(value)
