@@ -98,13 +98,39 @@ class QuestionViewTests(TestCase):
         self.assertQuerysetEqual(response.context['latest_question_list'],['<Question: Past question 2.>', '<Question: Past question 1.>'])
 
 class QuestionURLTests(TestCase):
+    #See: https://docs.djangoproject.com/en/1.7/ref/urlresolvers/#resolve
+    # for additional information on resolve()
     def test_url_index(self):
         """
         /polls/ should resolve to polls:index
-        """    
+        """
         resolver = resolve('/polls/')
         self.assertEqual(resolver.namespace,'polls')
         self.assertEqual(resolver.view_name,'polls:index')
+
+    def test_url_detail(self):
+        """
+        /polls/1/ should resolve to polls:detail
+        """
+        resolver = resolve('/polls/1/')
+        self.assertEqual(resolver.namespace,'polls')
+        self.assertEqual(resolver.view_name,'polls:detail')
+
+    def test_url_results(self):
+        """
+        /polls/1/results/ should resolve to polls:results
+        """
+        resolver = resolve('/polls/1/results/')
+        self.assertEqual(resolver.namespace,'polls')
+        self.assertEqual(resolver.view_name,'polls:results')
+        
+    def test_url_vote(self):
+        """
+        /polls/1/vote/ should resolve to polls:vote
+        """
+        resolver = resolve('/polls/1/vote/')
+        self.assertEqual(resolver.namespace,'polls')
+        self.assertEqual(resolver.view_name,'polls:vote')        
         
 class QuestionIndexDetailTests(TestCase):
     def test_detail_view_with_a_future_question(self):
