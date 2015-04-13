@@ -3,7 +3,7 @@ import datetime
 from django.utils import timezone
 from django.test import TestCase
 from polls.models import Question
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, resolve
 from django.contrib.auth.models import User
 
 class QuestionMethodTests(TestCase):
@@ -97,6 +97,15 @@ class QuestionViewTests(TestCase):
         response = self.client.get(reverse('polls:index'))
         self.assertQuerysetEqual(response.context['latest_question_list'],['<Question: Past question 2.>', '<Question: Past question 1.>'])
 
+class QuestionURLTests(TestCase):
+    def test_url_index(self):
+        """
+        /polls/ should resolve to polls:index
+        """    
+        resolver = resolve('/polls/')
+        self.assertEqual(resolver.namespace,'polls')
+        self.assertEqual(resolver.view_name,'polls:index')
+        
 class QuestionIndexDetailTests(TestCase):
     def test_detail_view_with_a_future_question(self):
         """
