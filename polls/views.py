@@ -6,6 +6,8 @@ from django.utils import timezone
 
 from polls.models import Choice, Question
 
+from django.forms import ModelForm
+
 from django.contrib.auth.decorators import login_required
 
 class LoginRequiredMixin(object):
@@ -63,4 +65,8 @@ def vote(request, question_id):
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
 
-	
+class QuestionModelForm(ModelForm):
+    class Meta:
+        model = Question
+        fields = ['question_text', 'pub_date']
+

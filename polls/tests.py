@@ -3,8 +3,11 @@ import datetime
 from django.utils import timezone
 from django.test import TestCase
 from polls.models import Question
+from polls.views import QuestionModelForm
 from django.core.urlresolvers import reverse, resolve
 from django.contrib.auth.models import User
+
+from django.db import DataError
 
 from django.core.exceptions import ValidationError
 import validators
@@ -174,6 +177,29 @@ class QuestionResultsTests(TestCase):
         question = create_question(question_text='Loged in', days=-1)
         response = self.client.get(reverse('polls:results',args=(question.id,)))
         self.assertContains(response, 'Loged in',status_code=200)
+        
+class QuestionModelTests(TestCase):
+    #max_length is enforced by django.db so we can use a simple
+    #unit test for that.
+    def test_question_text_max_length(self):
+        """
+        Should not allow question text longer than 200 characters
+        """
+        with self.assertRaises(DataError):
+            question = create_question(question_text=u'a'*201, days=-1)
+
+    #validators are not enforced by django.db so we need to use an
+    #integration test with a ModelForm.
+    def test_pub_date_not_future(self):
+        """
+        Should not allow questions published in the future
+        """
+        #create an invalid model object
+        question = create_question(question_text=u'a'*200, days=1000)
+        #load the invalid object into it's corresponding ModelForm
+        form = QuestionModelForm(instance=question)
+        #assert that the form is not valid
+        self.assertFalse(form.is_valid())
         
 class ValidatorTests(TestCase):
     def test_not_future_fails(self):
