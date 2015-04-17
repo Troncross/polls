@@ -2,28 +2,28 @@
 Codeship is a Continuous Delivery system.  See https://codeship.com for more
 information.
 
-Below test script configurations so the testing will use PostgreSQL on 
+#Project Settings
+Below Project Settings so the testing will use PostgreSQL on 
 Codeship.
 
-#Setup Commands
+##Test
+###Setup Commands
 ```
 # Setup PostgreSQL 9.3
 #https://codeship.com/documentation/databases/postgresql/
-psql -c 'create database $PG_USER;'
-psql -c 'alter database $PG_USER owner to $PG_USER;'
-psql -c 'alter user $PGUSER createdb;'
-DATABASE_URL='postgres://$PG_USER:$PG_PASSWORD@127.0.0.1:5432/$PG_USER'
+export PG_DBNAME='polls'
+createdb --owner=$PG_USER $PG_DBNAME
+export DATABASE_URL="postgres://$PG_USER:$PG_PASSWORD@127.0.0.1:5432/$PG_DBNAME"
 
 pip install -r requirements.txt
 
 # Sync your DB for django projects
 # python manage.py syncdb --noinput
-
 # Run migrations for your django project
 # python manage.py migrate --noinput
 ```
 
-#Test Commands
+###Test Commands
 ```
 # Running your Django tests
 python manage.py test
@@ -33,3 +33,9 @@ python manage.py test
 # Or use fabric to run your tests
 # fab test
 ```
+
+##Deployment
+I set up a deployment pipeline for Heroku.  A couple of things to check:
+You might have to explicitly set the Url for the application.   Also, turn off
+"Run migrations" option.
+
