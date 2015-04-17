@@ -179,8 +179,10 @@ class QuestionResultsTests(TestCase):
         self.assertContains(response, 'Loged in',status_code=200)
         
 class QuestionModelTests(TestCase):
-    #max_length is enforced by django.db so we can use a simple
-    #unit test for that.
+    #When using PostgreSQL (via the psycopg2 DBI) max_length is enforced by
+    # django.db so we can use a simple unit test for that.
+    # This unit test will fail when using sqlite3 because it does not enforce
+    # max_length.
     def test_question_text_max_length(self):
         """
         Should not allow question text longer than 200 characters
