@@ -4,7 +4,7 @@ information.
 
 #Project Settings
 Below Project Settings so the testing will use PostgreSQL on 
-Codeship.
+Codeship that will work with the DATABASE_URL technique.
 
 ##Test
 ###Setup Commands
@@ -36,6 +36,6 @@ python manage.py test
 
 ##Deployment
 I set up a deployment pipeline for Heroku.  A couple of things to check:
-You might have to explicitly set the Url for the application.   Also, turn off
-"Run migrations" option.
+You might have to explicitly set the URL for the application.   Also, turn off
+"Run migrations" option since it only runs rake migragtions for Ruby on Rails.
 
