@@ -39,4 +39,7 @@ exit
 export DATABASE_URL="postgres://ubuntu:password@localhost:5432/polls"
 ```
 
-    
+You can make the environment variable persistent with:
+```
+echo "export DATABASE_URL='postgres://ubuntu:password@localhost:5432/polls'" >> ~/.profile
+```
